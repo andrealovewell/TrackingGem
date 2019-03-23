@@ -3,7 +3,7 @@ class Tracking::CLI
  attr_accessor :userInput
 
   def call
-    tracking_status (get_zipcode)
+    weather_status (get_zipcode)
     goodbye
   end
 
@@ -14,9 +14,9 @@ class Tracking::CLI
     userInput
 end
 
-  def tracking_status(userInput)
+  def weather_status(userInput)
     puts "Here is the weather data"
-    @tracking = Tracking::Number.scrape_seventeenTrack(userInput)
+    @tracking = Tracking::Zip.scrape_weatherStreet(userInput)
     puts " Temperature: #{@tracking[0]}, City: #{@tracking[1]}, Visibility: #{@tracking[2]}, Wind: #{@tracking[3]}"
   end
 
